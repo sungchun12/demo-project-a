@@ -9,12 +9,39 @@ models:
           - unique
         tags: ['primary-key']
   - name: fct_monthly_financials
+    latest_version: 1
+    config:
+      contract:
+        enforced: true
     columns:
       - name: date_month
+        data_type: timestamp
+        constraints:
+          - type: not_null
         tests:
-          - not_null
           - unique
         tags: ['primary-key']
+      - name: cnt_subscribers
+        data_type: integer
+        constraints:
+          - type: not_null
+      - name: sum_revenue
+        data_type: integer
+        constraints:
+          - type: not_null
+    versions:
+      - v: 1
+        # config:
+        #   alias: fct_monthly_financials
+        # Matches what's above -- nothing more needed
+    
+      - v: 2
+        # Removed a column -- this is the breaking change!
+        columns:
+          # This means: use the 'columns' list from above, but exclude country_name
+          - include: all
+            exclude: [cnt_subscribers]
+      
   - name: fct_yearly_financials
     columns:
       - name: date_year
