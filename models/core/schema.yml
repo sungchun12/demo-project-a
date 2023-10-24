@@ -10,6 +10,7 @@ models:
         tags: ['primary-key']
   - name: fct_monthly_financials
     latest_version: 1
+    access: public
     config:
       contract:
         enforced: true
