@@ -40,7 +40,7 @@ models:
         # Removed a column -- this is the breaking change!
         columns:
           # This means: use the 'columns' list from above, but exclude country_name
-        - name: cnt_subscribers
+        - name: added_column
           data_type: text
           constraints:
             - type: not_null
