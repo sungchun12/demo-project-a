@@ -40,8 +40,10 @@ models:
         # Removed a column -- this is the breaking change!
         columns:
           # This means: use the 'columns' list from above, but exclude country_name
-          - include: all
-            exclude: [cnt_subscribers]
+        - name: cnt_subscribers
+          data_type: text
+          constraints:
+            - type: not_null
       
   - name: fct_yearly_financials
     columns:
